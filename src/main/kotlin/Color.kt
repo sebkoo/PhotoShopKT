@@ -41,6 +41,35 @@ class Color(r: Int, g: Int, b: Int) {
         if (v <= 0) 0
         else if (v >= 255) 255
         else v
+
+    /*
+    Create a companion object for Color so that you can write
+        Color.BLACK, Color.RED, ...
+        Color.fromHex(int): Color instance out of that
+    */
+    companion object {
+        val BLACK = Color(0,0,0)
+        val RED   = Color(255,0,0)
+        val GREEN = Color(0,255,0)
+        val BLUE  = Color(0,0,255)
+
+        fun fromHex(arg: Int): Color {
+            // xxxxxxxxrrrrrrrrggggggggbbbbbbbb
+            // 00000000111111110000000000000000 = 0xFF0000
+            // 00000000rrrrrrrr0000000000000000
+            // 000000000000000000000000rrrrrrrr
+            val red = (arg and 0xFF0000) shr 16
+            // 00000000000000001111111100000000 = 0xFF00
+            // 0000000000000000gggggggg00000000
+            // 000000000000000000000000gggggggg
+            val green = (arg and 0xFF00) shr 8
+            // 00000000000000000000000011111111
+            // 000000000000000000000000bbbbbbbb
+            val blue = arg and 0xFF
+
+            return Color(red, green, blue)
+        }
+    }
 }
 
 fun drawColor(width: Int, height: Int, path: String) {
@@ -58,4 +87,8 @@ fun main() {
     red.draw(20,20,"src/main/resources/red.jpg")
     green.draw(20,20,"src/main/resources/green.jpg")
     magenta.draw(20,20,"src/main/resources/magenta.jpg")
+
+    Color.BLUE.draw(20,20,"src/main/resources/blue.jpg")
+    Color.fromHex(0xEDEDED).draw(20,20,"src/main/resources/ed.jpg")
+    Color.fromHex(0x888888).draw(20,20,"src/main/resources/gray.jpg")
 }
