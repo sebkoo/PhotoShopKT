@@ -1,2 +1,2 @@
 # PhotoShopKT
-PhotoShop in Kotlin
+Image Manipulation application in Kotlin
