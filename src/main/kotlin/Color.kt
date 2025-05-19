@@ -52,6 +52,7 @@ class Color(r: Int, g: Int, b: Int) {
         val RED   = Color(255,0,0)
         val GREEN = Color(0,255,0)
         val BLUE  = Color(0,0,255)
+        val GRAY  = Color(128,128,128)
 
         fun fromHex(arg: Int): Color {
             // xxxxxxxxrrrrrrrrggggggggbbbbbbbb
