@@ -1,3 +1,5 @@
+package com.rockthejvm.practice
+
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
@@ -6,29 +8,25 @@ import javax.imageio.ImageIO
 // 24-bit integer = Int
 // 00000000rrrrrrrrggggggggbbbbbbbb
 
-/*
-    1. Define a Color class that takes 3 ints as arguments:
-        - red
-        - green
-        - blue
-    2. Make sure that the properties of the color (red, green, blue, all as integers) are always in between 0 and 255
-    3. Add a method toInt() that returns a SINGLE integer with the representation above
-        00000000rrrrrrrrggggggggbbbbbbbb
-        use shl, shr, and, or, xor, ...
-    4. Add a draw (width, height, path) that draws an image of width x height, all with the same color
- */
+// 1. Define a Color class that takes three ints (red, green, blue) as arguments:
 class Color(r: Int, g: Int, b: Int) {
     val red:   Int = clampColor(r)  // 000000000000000000000000rrrrrrrr
     val green: Int = clampColor(g)  // 000000000000000000000000gggggggg
     val blue:  Int = clampColor(b)  // 000000000000000000000000bbbbbbbb
 
-    // 00000000rrrrrrrr0000000000000000
-    // 0000000000000000gggggggg00000000
-    // 000000000000000000000000bbbbbbbb
-    // 00000000rrrrrrrrggggggggbbbbbbbb
+    /*
+        3. Add a method toInt() that returns a SINGLE integer with the representation above
+        00000000rrrrrrrrggggggggbbbbbbbb
+        use shl, shr, and, or, xor, ...
+
+        00000000rrrrrrrr0000000000000000
+        0000000000000000gggggggg00000000
+        000000000000000000000000bbbbbbbb
+        00000000rrrrrrrrggggggggbbbbbbbb
+     */
     fun toInt() =
         (red shl 16) or (green shl 8) or blue
-
+    // 4. Add a draw (width, height, path) that draws an image of width x height, all with the same color
     fun draw(width: Int, height: Int, path: String) {
         val pixelInt = toInt()
         val image  = BufferedImage(width, height, BufferedImage.TYPE_INT_RGB)
@@ -36,7 +34,7 @@ class Color(r: Int, g: Int, b: Int) {
         image.setRGB(0,0, width, height, pixels,0, width)
         ImageIO.write(image,"JPG", File(path))
     }
-
+    // 2. Make sure that the properties of the color (red, green, blue, all as integers) are always in between 0 and 255
     fun clampColor(v: Int) =
         if (v <= 0) 0
         else if (v >= 255) 255

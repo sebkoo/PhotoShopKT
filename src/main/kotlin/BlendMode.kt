@@ -1,3 +1,5 @@
+package com.rockthejvm.practice
+
 interface BlendMode {
     // 1. Create a BlendMode interface with a single method to combine two colors (fg and bg) and return another.
     fun combine(fg: Color, bg: Color): Color    // foreground / background
