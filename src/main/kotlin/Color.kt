@@ -79,7 +79,7 @@ fun drawColor(width: Int, height: Int, path: String) {
 }
 
 fun main() {
-//    drawColor(300,300,"src/main/resources/red.jpg")
+    drawColor(300,300,"src/main/resources/red.jpg")
     val red = Color(255,0,0)
     val green = Color(-1,561566,0)
     val magenta = Color(255,0,255)
@@ -87,7 +87,7 @@ fun main() {
     green.draw(20,20,"src/main/resources/green.jpg")
     magenta.draw(20,20,"src/main/resources/magenta.jpg")
 
-    Color.BLUE.draw(20,20,"src/main/resources/blue.jpg")
+    Color.BLUE.draw(1000,560,"src/main/resources/blue.jpg")
     Color.fromHex(0xEDEDED).draw(20,20,"src/main/resources/ed.jpg")
     Color.fromHex(0x888888).draw(20,20,"src/main/resources/gray.jpg")
 }

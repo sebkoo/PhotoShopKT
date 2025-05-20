@@ -8,8 +8,7 @@ import javax.swing.JPanel
 import javax.swing.WindowConstants
 import kotlin.system.exitProcess
 
-// Java Swing
-object App {
+object App {    // Java Swing
     private lateinit var frame: JFrame
     private lateinit var imagePanel: ImagePanel
 
@@ -17,7 +16,7 @@ object App {
         override fun paintComponent(g: Graphics) {
             super.paintComponent(g)
             // render the picture inside this "graphics"
-            // g.drawImage(image.buffImage,0,0,null)
+            // g.drawImage(image.buffImage,0,0,null)   // TODO - exercise - make this work
             image.draw(g)
         }
 
@@ -79,6 +78,15 @@ object App {
                     else
                         imagePanel.getImage().saveResource(words[1])
                 "exit" -> exitProcess(0)
+                else -> {
+                    // 1. use Transformation.parse(command) -> a Transformation instance
+                    val transformation = Transformation.parse(command)
+                    // 2. run the transformation on the current image
+                    val newImage = transformation.invoke(imagePanel.getImage())
+                    // 3. Use imagePanel.replaceImage to replace the current image with the new image
+                    imagePanel.replaceImage(newImage)
+                    frame.pack()
+                }
             }
         }
     }
