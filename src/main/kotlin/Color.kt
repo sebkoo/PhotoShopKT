@@ -1,5 +1,3 @@
-package com.rockthejvm.practice
-
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
@@ -36,7 +34,7 @@ class Color(r: Int, g: Int, b: Int) {
     }
     // 2. Make sure that the properties of the color (red, green, blue, all as integers) are always in between 0 and 255
     fun clampColor(v: Int) =
-        if (v <= 0) 0
+        if      (v <= 0  ) 0
         else if (v >= 255) 255
         else v
 
@@ -79,7 +77,7 @@ fun drawColor(width: Int, height: Int, path: String) {
 }
 
 fun main() {
-    drawColor(300,300,"src/main/resources/red.jpg")
+//    drawColor(300,300,"src/main/resources/red.jpg")
     val red = Color(255,0,0)
     val green = Color(-1,561566,0)
     val magenta = Color(255,0,255)

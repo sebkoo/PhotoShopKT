@@ -1,5 +1,3 @@
-package com.rockthejvm.practice
-
 import java.awt.Dimension
 import java.awt.Graphics
 import java.util.*
@@ -8,7 +6,8 @@ import javax.swing.JPanel
 import javax.swing.WindowConstants
 import kotlin.system.exitProcess
 
-object App {    // Java Swing
+// Java Swing
+object App {
     private lateinit var frame: JFrame
     private lateinit var imagePanel: ImagePanel
 
@@ -59,7 +58,6 @@ object App {    // Java Swing
 //        loadResource("Sebastiano.jpg")
 //        Thread.sleep(3000)
 //        loadResource("cropped.jpg")
-
         val scanner = Scanner(System.`in`)
         while (true) {
             print("> ")
